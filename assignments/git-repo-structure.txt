@@ -40,10 +40,7 @@ lowes-javabootcamp-dih5
 				|
 				|__java
 					|
-					|___java-assignments
-							|__ Day1Assignment1.java
-							|__ Day1Assignment2.java
-									
+					|___core-java-assignments				
 					|
 					|___bankingapp-with-arrays				
 										
