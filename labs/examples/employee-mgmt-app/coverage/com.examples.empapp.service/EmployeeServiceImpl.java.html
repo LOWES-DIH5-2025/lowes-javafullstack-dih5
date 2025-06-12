@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EmployeeServiceTests Coverage Results</a> &gt; <a href="index.source.html" class="el_package">com.examples.empapp.service</a> &gt; <span class="el_source">EmployeeServiceImpl.java</span></div><h1>EmployeeServiceImpl.java</h1><pre class="source lang-java linenums">package com.examples.empapp.service;
+
+import com.examples.empapp.dao.EmployeeDao;
+import com.examples.empapp.dao.EmployeeDaoJdbcImpl;
+import com.examples.empapp.model.Employee;
+
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+public class EmployeeServiceImpl implements EmployeeService {
+
+	EmployeeDao employeeDao;
+
+<span class="fc" id="L19">	Comparator&lt;Employee&gt; EMPLOYEE_NAME_ASC_SORT = new Comparator&lt;Employee&gt;() {</span>
+		@Override
+		public int compare(Employee o1, Employee o2) {
+<span class="nc" id="L22">			return o1.getName().compareTo(o2.getName());</span>
+
+		}
+	};
+
+<span class="fc" id="L27">	public EmployeeServiceImpl() {</span>
+<span class="fc" id="L28">		employeeDao = new EmployeeDaoJdbcImpl();</span>
+<span class="fc" id="L29">	}</span>
+
+	public boolean create(Employee employee) {
+		//validate employee details
+<span class="fc" id="L33">		return employeeDao.create(employee);		</span>
+	}
+
+	public Employee get(int id) {
+<span class="nc" id="L37">		return employeeDao.get(id);</span>
+	}
+
+	public List&lt;Employee&gt; getAll() {
+<span class="nc" id="L41">		return employeeDao.getAll();</span>
+	}
+
+	public boolean update(Employee employee) {
+<span class="nc" id="L45">		return employeeDao.update(employee);</span>
+	}
+
+	public boolean delete(int id) {
+<span class="nc" id="L49">		return employeeDao.delete(id);</span>
+	}
+
+	public boolean validate(Employee emp, String msg, Predicate&lt;Employee&gt; condition,
+			Function&lt;String, Boolean&gt; operation) {
+<span class="nc bnc" id="L54" title="All 2 branches missed.">		if (!condition.test(emp)) {</span>
+<span class="nc" id="L55">			return operation.apply(msg);</span>
+		}
+<span class="nc" id="L57">		return true;</span>
+	}
+
+	// Get Employee count greater than given age
+	public long getEmployeeCountAgeGreaterThan(Predicate&lt;Employee&gt; condition) {
+<span class="nc" id="L62">		long count = employeeDao.getAll().stream().filter(condition).count();</span>
+
+<span class="nc" id="L64">		return count;</span>
+	}
+
+	// Get list of Employee IDs whose age is greater than given age
+	public List&lt;Integer&gt; getEmployeeIdsAgeGreaterThan(int age) {
+<span class="nc" id="L69">		List&lt;Integer&gt; empIds = employeeDao.getAll()</span>
+<span class="nc" id="L70">				.stream()</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">				.filter(emp -&gt; emp.getAge() &gt; age)</span>
+<span class="nc" id="L72">				.map(emp -&gt; emp.getEmpId())</span>
+<span class="nc" id="L73">				.collect(Collectors.toList());</span>
+<span class="nc" id="L74">		return empIds;</span>
+	}
+
+	// Get Department wise Employee count
+	public Map&lt;String, Long&gt; getEmployeeCountByDepartment() {
+
+<span class="nc" id="L80">		return employeeDao.getAll()</span>
+<span class="nc" id="L81">				.stream()</span>
+<span class="nc" id="L82">				.map(Employee::getDepartment) // output -&gt; Department name</span>
+<span class="nc" id="L83">				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));</span>
+				// Key - Department name
+				// Value - Count
+	}
+
+	// Get Department wise Employee count ordered by Department name
+	public Map&lt;String, Long&gt; getEmployeeCountByDepartmentOdered() {
+<span class="nc" id="L90">		return employeeDao.getAll()</span>
+<span class="nc" id="L91">				.stream()</span>
+<span class="nc" id="L92">				.sorted(Comparator.comparing(Employee::getDepartment))</span>
+<span class="nc" id="L93">				.collect(Collectors.groupingBy(Employee::getDepartment, LinkedHashMap::new, Collectors.counting()));</span>
+	}
+
+	// Get Department wise average Employee age ordered by Department name
+	public Map&lt;String, Double&gt; getAvgEmployeeAgeByDept() {
+<span class="nc" id="L98">		return employeeDao.getAll()</span>
+<span class="nc" id="L99">				.stream()</span>
+<span class="nc" id="L100">				.sorted(Comparator.comparing(Employee::getDepartment)).collect(Collectors</span>
+<span class="nc" id="L101">				.groupingBy(Employee::getDepartment, LinkedHashMap::new, Collectors.averagingInt(Employee::getAge)));</span>
+	}
+
+	// Get Departments have more than given Employee count
+	public List&lt;String&gt; getDepartmentsHaveEmployeesMoreThan(int criteria) {
+		// List&lt;String&gt; deptList = new ArrayList&lt;&gt;();
+
+<span class="nc" id="L108">		return employeeDao.getAll()</span>
+<span class="nc" id="L109">				.stream()</span>
+<span class="nc" id="L110">				.sorted(Comparator.comparing(Employee::getDepartment))</span>
+<span class="nc" id="L111">				.collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()))</span>
+				// .forEach((k,v) -&gt; {if(v &gt; criteria) {deptList.add(k);}});
+				// return deptList;
+
+<span class="nc" id="L115">				.entrySet().stream() // Creating one more stream to filter the output</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">				.filter(entry -&gt; entry.getValue() &gt; criteria).map(Map.Entry::getKey).collect(Collectors.toList());</span>
+	}
+
+	// Get Employee names starting with given string
+	public List&lt;String&gt; getEmployeeNamesStartsWith(String prefix) {
+<span class="nc" id="L121">		return employeeDao.getAll()</span>
+<span class="nc" id="L122">				.stream().filter(emp -&gt; emp.getName().startsWith(prefix)).map(emp -&gt; emp.getName())</span>
+<span class="nc" id="L123">				.collect(Collectors.toList());</span>
+	}
+
+	public void bulkImport() {
+<span class="nc" id="L127">		int counter = 0;</span>
+<span class="nc" id="L128">		try (Scanner in = new Scanner(new FileReader(&quot;./input/employee-input.txt&quot;))) {</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">			while (in.hasNextLine()) {</span>
+<span class="nc" id="L130">				String emp = in.nextLine();</span>
+<span class="nc" id="L131">				Employee employee = new Employee();</span>
+<span class="nc" id="L132">				StringTokenizer tokenizer = new StringTokenizer(emp, &quot;,&quot;);</span>
+
+				// Emp ID - Auto Generated
+//				employee.setEmpId(Integer.parseInt(tokenizer.nextToken()));
+				// Name
+<span class="nc" id="L137">				employee.setName(tokenizer.nextToken());</span>
+				// Age
+<span class="nc" id="L139">				employee.setAge(Integer.parseInt(tokenizer.nextToken()));</span>
+				// Designation
+<span class="nc" id="L141">				employee.setDesignation(tokenizer.nextToken());</span>
+				// Department
+<span class="nc" id="L143">				employee.setDepartment(tokenizer.nextToken());</span>
+				// Country
+<span class="nc" id="L145">				employee.setCountry(tokenizer.nextToken());</span>
+
+<span class="nc" id="L147">				employeeDao.create(employee);</span>
+<span class="nc" id="L148">				counter++;</span>
+<span class="nc" id="L149">			}</span>
+<span class="nc" id="L150">			System.out.format(&quot;%d Employees are imported successfully.&quot;, counter);</span>
+<span class="nc" id="L151">		} catch (IOException e) {</span>
+<span class="nc" id="L152">			System.out.println(&quot;Error occured while importing employee data. &quot; + e.getMessage());</span>
+<span class="nc" id="L153">		}</span>
+<span class="nc" id="L154">	}</span>
+
+	public void bulkExport() {
+<span class="nc" id="L157">		try (FileWriter out = new FileWriter(&quot;./output/employee-output.txt&quot;)) {</span>
+<span class="nc" id="L158">			employeeDao</span>
+<span class="nc" id="L159">					.getAll()</span>
+<span class="nc" id="L160">					.stream()</span>
+<span class="nc" id="L161">					.map(emp -&gt; emp.getEmpId() + &quot;,&quot; + emp.getName() + &quot;,&quot; + emp.getAge() + &quot;,&quot;</span>
+<span class="nc" id="L162">							+ emp.getDesignation() + &quot;,&quot; + emp.getDepartment() + &quot;,&quot; + emp.getCountry() + &quot;\n&quot;)</span>
+<span class="nc" id="L163">					.forEach(rec -&gt; {</span>
+						try {
+<span class="nc" id="L165">							out.write(rec);</span>
+<span class="nc" id="L166">						} catch (IOException e) {</span>
+<span class="nc" id="L167">							System.out</span>
+<span class="nc" id="L168">									.println(&quot;Error occured while writing employee data into file. &quot; + e.getMessage());</span>
+<span class="nc" id="L169">							e.printStackTrace();</span>
+<span class="nc" id="L170">						}</span>
+<span class="nc" id="L171">					});</span>
+<span class="nc" id="L172">			System.out.format(&quot;%d Employees are exported successfully.&quot;, employeeDao.getAll().size());			</span>
+<span class="nc" id="L173">		} catch (IOException e) {</span>
+<span class="nc" id="L174">			System.out.println(&quot;Error occured while exporting employee data. &quot; + e.getMessage());</span>
+<span class="nc" id="L175">		}		</span>
+<span class="nc" id="L176">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
