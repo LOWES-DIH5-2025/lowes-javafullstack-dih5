@@ -7,3 +7,7 @@
 ### Core Java Assessment - 01
 
 `https://forms.gle/UzUCxCo1idiSEPcu8`
+
+### Adv Jav Assessment - 02
+
+`https://forms.gle/Tanb8zQZt91yX9ym9`
