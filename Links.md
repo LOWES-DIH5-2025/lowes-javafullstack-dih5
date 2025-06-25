@@ -15,3 +15,7 @@
 ### Adv Java Assessment - 03
 
 `https://forms.gle/NTTfA62z4pCmEbH39`
+
+### JDBC and JUnit Assessment - 04
+
+`https://forms.gle/1uj8GJF1Td5vQbdX8`
