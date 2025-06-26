@@ -10,10 +10,10 @@
 	<description>Example configuration to get you started.</description>
 
 	<!-- Enable for H2 -->
-	<jdbc:embedded-database id="dataSource" type="H2" />
+<!--	<jdbc:embedded-database id="dataSource" type="H2" />-->
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
+<!--	<tx:annotation-driven transaction-manager="transactionManager" />-->
 
-	<context:component-scan base-package="com.examples.spring.jpa" />
+<!--	<context:component-scan base-package="com.examples.spring.jpa" />-->
 
 </beans>

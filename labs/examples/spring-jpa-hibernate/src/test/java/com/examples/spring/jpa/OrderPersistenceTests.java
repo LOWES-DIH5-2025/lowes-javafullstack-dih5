@@ -15,8 +15,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-//@ContextConfiguration(loader= AnnotationConfigContextLoader.class, classes = JpaConfiguration.class)
-@ContextConfiguration
+@ContextConfiguration(loader= AnnotationConfigContextLoader.class, classes = JpaConfiguration.class)
+//@ContextConfiguration
 @ExtendWith(SpringExtension.class)
 public class OrderPersistenceTests {
 

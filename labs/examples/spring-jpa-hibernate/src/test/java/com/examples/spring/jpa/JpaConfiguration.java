@@ -6,6 +6,7 @@ import org.hibernate.dialect.H2Dialect;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -23,8 +24,18 @@ import java.util.Map;
 public class JpaConfiguration {
 
 	// Enable for H2
-	@Value("#{dataSource}")
-	private DataSource dataSource;
+//	@Value("#{dataSource}")
+//	private DataSource dataSource;
+
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.h2.Driver");
+		dataSource.setUrl("jdbc:h2:mem:training;DB_CLOSE_DELAY=-1");
+		dataSource.setUsername("sa");
+		dataSource.setPassword("");
+		return dataSource;
+	}
 	
 //	@Bean
 //	public MysqlDataSource dataSource() {
@@ -77,8 +88,8 @@ public class JpaConfiguration {
 	public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
 		LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
 
-		lef.setDataSource(this.dataSource); // Enable for H2
-//		lef.setDataSource(this.dataSource());
+//		lef.setDataSource(this.dataSource); // Enable for H2
+		lef.setDataSource(this.dataSource());
 		lef.setJpaPropertyMap(this.jpaProperties());
 		lef.setJpaVendorAdapter(this.jpaVendorAdapter());
 		return lef;
