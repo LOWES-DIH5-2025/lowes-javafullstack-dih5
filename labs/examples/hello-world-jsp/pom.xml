@@ -10,7 +10,8 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<java-version>21</java-version>
+		<java-version>17</java-version>
+		<!--		<java-version>21</java-version>-->
 		<servlet-api-version>6.0.0</servlet-api-version>
 		<jsp-api-version>3.1.0</jsp-api-version>
 <!--		<servlet-api-version>4.0.1</servlet-api-version>-->
