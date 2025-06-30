@@ -1,0 +1,35 @@
+
+JPA
+	- Hibernate
+	- MyBatis
+	- EclipseLink
+
+EntityManagerFactory
+EntityManager
+	- Begin Transaction
+	- Persist|Delete|Query
+	- Commit Transaction
+
+STEP 1: Add Dependencies
+	
+		spring-context
+		spring-orm
+		hibernate
+		postgresql/h2
+
+STEP 2: Annotate Entity Class
+
+		@Entity
+		@Table
+		@ID
+		@GeneratedIdentity
+		@Column
+		@Join
+		@ManyToOne
+		@OneToMany
+
+STEP 3: Configure Datasource and JPA properties
+
+STEP 4: Create DAO class and Obtain the reference of EntityManagerFactory
+
+STEP 5: Perform CRUD operations 
