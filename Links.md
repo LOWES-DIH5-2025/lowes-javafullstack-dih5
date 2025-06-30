@@ -23,3 +23,8 @@
 ### Spring Core, AOP, JPA/Hibernate, Design Patterns Assessment - 05
 
 `https://forms.gle/z757PR8FUpwdp6vm7`
+
+
+
+### Softwares
+`https://drive.google.com/drive/folders/1dAGEhUl2ESNJwN9AI36AtyMtxZ7Ss1VB?usp=sharing`
