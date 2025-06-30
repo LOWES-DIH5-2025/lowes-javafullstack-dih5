@@ -19,3 +19,7 @@
 ### JDBC and JUnit Assessment - 04
 
 `https://forms.gle/1uj8GJF1Td5vQbdX8`
+
+### Spring Core, AOP, JPA/Hibernate, Design Patterns Assessment - 05
+
+`https://forms.gle/z757PR8FUpwdp6vm7`
