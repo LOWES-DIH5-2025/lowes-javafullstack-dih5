@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.examples.empapp</groupId>
+  <artifactId>employee-mgmt-app04</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+	<properties>
+		<java-version>17</java-version>
+<!--		<org.springframework-version>5.3.28</org.springframework-version>-->
+		<org.springframework-version>6.2.7</org.springframework-version>
+		<maven-compiler-plugin-version>3.14.0</maven-compiler-plugin-version>
+	</properties>
+
+	<!-- dependencies management -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+	</dependencies>
+
+	<!-- build management -->
+	<build>
+		<finalName>employee-mgmt-app04</finalName>
+
+		<!-- plugins -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin-version}</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>  
+</project>
