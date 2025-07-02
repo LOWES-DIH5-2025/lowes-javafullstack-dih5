@@ -63,12 +63,10 @@ lowes-javabootcamp-dih5
 					|___bankingapp-with-spring-core-jdbc
 					|
 					|___bankingapp-with-spring-core-jpa
-					|
-					|___bankingapp-with-spring-rest
-				|
+
+									
 				|__sboot
-					|
-					|___bankingapp-with-sboot-rest-jdbc-temp
+
 					|
 					|___bankingapp-with-sboot-rest-jpa
 
