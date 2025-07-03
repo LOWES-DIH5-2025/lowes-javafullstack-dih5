@@ -1,0 +1,89 @@
+Spring Boot Overview
+	- Minimize configuration and boilerplate code
+	- Production ready standalone application
+	- Provides various non functional / infra features - embedded webservers, monitoring & mgmt, metrics
+	
+
+Spring Boot Components
+	- Auto Configuration -> 
+	- Opinionated View
+	- Spring Boot Starters -> spring-boot-starter, spring-boot-web-starter, spring-boot-data-jpa-starter
+	- Spring Boot Parent Starter -> v3.3.1
+	
+	spring-boot-starter 
+		- spring-core
+		- spring-context - 6.1.10
+		- spring-beans
+		- spring-expression
+		- sping-aop
+		- snake-yaml
+		- logback - 1.2.20
+
+Creating Spring Boot project
+	- Spring Boot Maven project
+	- Spring Boot Starter - using IDE
+	- Sprint Boot Initialzr
+	- Spring Boot CLI
+		- spring init --dependencies=web SpringBootCliEx
+				
+Features
+	- Spring Application -> run()
+
+	- Command Line Runner / Application Runner
+
+	- Externalized Configuration (application.properties / application.yaml)
+		- property file
+		- yaml file
+		
+	@ConfigurationProperties
+	
+	- Application Properties / YAML
+	- Logging - logback, log4j -> SLF4J
+	- Packaging - jar, war
+	- Profiling	- dev, qa, prod  
+		java -jar app.jar --spring.profiles.active=prod
+		
+		application-dev.properties | application-uat.properties | application-prod.properties
+	
+	- DevTools  - code changes will be auto refreshed
+	- Monitoring -> Actuators -> Monitor health / metrics
+
+
+Web App 
+	-> Spring Web -> Spring MVC -> presentation, service and data access
+					 Spring REST -> service and data access
+					 
+	-> Spring Boot support for Spring MVC
+	-> Spring Boot support for Spring REST
+
+	-> Spring Boot support for Spring Data JPA
+
+			Repository
+				- JpaRepository
+				- MongoRepository
+				- CassandraRepository
+
+			public interface OrderRepository extends JpaRepository<Order, Integer> {
+
+				public List<Order> findByCategoryAndDescriptionContaining(String category, String description);
+
+				// JPQL
+				@Query("SELECT o FROM Order o WHERE description LIKE CANCAT('%', :keyword. '%')")
+				public List<Order> searchOrders(@Param String keyword);
+
+			}
+			
+			public class OrderServiceImpl extends OrderService {
+
+					@Autowired
+					OrderRepository orderRepo;
+
+					orderRepo.save(order)
+					orderRepo.deleteById(id)
+					orderRepo.findById(id)
+					orderRepo.findAll();
+
+					orderRepo.findByCategory("Laptops", "Thinkpad");
+
+
+	

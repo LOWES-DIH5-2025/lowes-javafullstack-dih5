@@ -1,0 +1,8 @@
+Enable Lombok support in Intellij 
+==================================
+
+1) Add lombok dependency to the project (in pom.xml)
+
+2) Go To ->  Settings -> Plugins -> Search and Install 'Lombok' from Marketplace
+
+3) Go To ->  Settings -> Build, Execution, Deployment –> Compiler -> Annotation Processors -> Check "Enable Annotation Processing"
