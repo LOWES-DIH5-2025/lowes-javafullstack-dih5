@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: sboot-demo-app
+
+debug:  true
+
+logging:
+  file:
+    name: demoapp1.log
+  level: ROOT

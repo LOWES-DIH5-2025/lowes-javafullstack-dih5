@@ -1,0 +1,25 @@
+spring.profiles.active: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+dbname: sboot_dev
+host: localhost
+port: 3306
+---
+spring:
+  config:
+    activate:
+      on-profile: uat
+dbname: sboot_uat
+host: localhost
+port: 5506
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+dbname: sboot_prod
+host: localhost
+port: 4406
