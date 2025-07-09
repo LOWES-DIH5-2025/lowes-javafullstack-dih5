@@ -73,10 +73,16 @@ lowes-javabootcamp-dih5
 	|
 	|____ 	capstone
 					|
-					|___ ecomapp
+					|___ matchxapp
+						   |_____ supplier-service
+						   |
 						   |_____ product-service
 						   |
-						   |_____ category-service
+						   |_____ order-service
+						   |
+						   |_____ matching-service
+						   |
+						   |_____ notification-service
 						   |
 						   |_____ registry-service
 						   |
@@ -86,26 +92,4 @@ lowes-javabootcamp-dih5
 						   |
 						   |_____ admin-service
 					   	   |
-						   |_____ ecomapp-ui
-
-						
-					|
-					|___ bankingapp
-						   |
-						   |_____ account-service
-						   |
-						   |_____ transaction-service
-						   |
-						   |_____ fund-transfer-service
-						   |
-						   |_____ registry-service
-						   |
-						   |_____ gateway-service
-						   |
-						   |_____ config-service
-						   |
-						   |_____ auth-service
-						   |
-						   |_____ admin-service
-						   |
-						   |_____ bankingapp-ui
+						   |_____ matchx-ui
