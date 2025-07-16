@@ -20,9 +20,25 @@ public class SpringBootKafkaConsumerApplication {
 	// Consume message as String 	
 	@KafkaListener(topics = {"test"}, groupId = "test-group")
 	public void consumeMessageAsString(String message) {
-		logger.info("Consume message as String - Received message - {}", message);
+		logger.info("#1 Consume message as String - Received message - {}", message);
 	}
-	
+
+	@KafkaListener(topics = {"demo"}, groupId = "demo-group")
+	public void consumeMessageAsString1(String message) {
+		logger.info("#1 Consume message as String - Received message - {}", message);
+	}
+
+	@KafkaListener(topics = {"demo"}, groupId = "demo-group")
+	public void consumeMessageAsString2(String message) {
+		logger.info("#2 Consume message as String - Received message - {}", message);
+	}
+
+	@KafkaListener(topics = {"demo"}, groupId = "demo-group")
+	public void consumeMessageAsString3(String message) {
+		logger.info("#3 Consume message as String - Received message - {}", message);
+	}
+
+
 	// Consume message as Greeting object
 //	@KafkaListener(topics = {"test1"}, groupId = "test-group1", containerFactory = "greetingKafkaListenerContainerFactory")
 //	public void consumeMessageAsObject(Greeting greeting) {

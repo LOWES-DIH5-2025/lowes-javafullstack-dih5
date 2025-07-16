@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Random;
+
 @SpringBootApplication
 @RestController
 public class SpringBootKafkaProducerApplication {
@@ -31,7 +33,7 @@ public class SpringBootKafkaProducerApplication {
 	@PostMapping("/publish")
 	public String publish(@RequestParam String topic, @RequestBody String message) {
 		logger.info("Publishing message '{}' to '{}' topic", message, topic);
-		strKafkaTemplate.send(topic, message);
+		strKafkaTemplate.send(topic, String.valueOf(new Random().nextInt()), message);
 		return "Message published successfully";
 	}
 	
