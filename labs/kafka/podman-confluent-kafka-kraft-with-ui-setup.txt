@@ -52,6 +52,7 @@ podman run -d --name kafka3 --network kafka-net --hostname kafka3 -p 9094:9094 \
   -e KAFKA_LOG_DIRS=/tmp/kraft-combined-logs \
   confluentinc/cp-kafka:latest
 
+
 # Start Kafka UI (detailed, with cluster config)
 podman run -d --name kafka-ui --network kafka-net \
   -p 8088:8080 \
