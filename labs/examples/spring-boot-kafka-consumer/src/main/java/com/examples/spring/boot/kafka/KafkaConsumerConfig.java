@@ -27,15 +27,17 @@ public class KafkaConsumerConfig {
 	public Map<String, Object> consumerConfigs() {
 		Map<String, Object> props = new HashMap<>();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
-		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 
 		return props;
 	}
 
 	@Bean
 	public ConsumerFactory<String, Greeting> greetingConsumerFactory() {
-		return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(), new JsonDeserializer<>(Greeting.class));
+		JsonDeserializer<Greeting> deserializer = new JsonDeserializer<>(Greeting.class);
+		deserializer.addTrustedPackages("com.examples.spring.boot.kafka");
+		return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(), deserializer);
 	}
 
 	@Bean

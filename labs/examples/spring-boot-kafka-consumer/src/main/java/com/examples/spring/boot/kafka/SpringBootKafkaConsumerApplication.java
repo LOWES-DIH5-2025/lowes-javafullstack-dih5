@@ -40,17 +40,26 @@ public class SpringBootKafkaConsumerApplication {
 
 
 	// Consume message as Greeting object
-//	@KafkaListener(topics = {"test1"}, groupId = "test-group1", containerFactory = "greetingKafkaListenerContainerFactory")
-//	public void consumeMessageAsObject(Greeting greeting) {
-//		logger.info("Consume message as Object - Received message - {}", greeting);
-//	}
+	@KafkaListener(topics = {"test1"},
+			groupId = "test-group1",
+			containerFactory = "greetingKafkaListenerContainerFactory")
+	public void consumeMessageAsObject(Greeting greeting) {
+		logger.info("Consume message as Object - Received message - {}", greeting);
+	}
 	
 	// Consume message as Consumer Record
-//	@KafkaListener(topics = {"test"}, groupId = "test-group")
-//	public void consumeMessageAsConsumerRecord(ConsumerRecord<String, Greeting> message) {
-//		Greeting greeting = message.value();
-//		logger.info("Consume message as Consumer Record - Received message - {}", greeting);
-//	}	
+	@KafkaListener(
+		topics = {"test1"},
+		groupId = "test-group2",
+		containerFactory = "greetingKafkaListenerContainerFactory"
+	)
+	public void consumeMessageAsConsumerRecord(ConsumerRecord<String, Greeting> message) {
+		Greeting greeting = message.value();
+		logger.info("Consume message as Consumer Record - Received message - {}", greeting);
+		// print consumer record details
+		logger.info("Consumer Record Details - Topic: {}, Partition: {}, Offset: {}, Key: {}, Value: [{}]",
+				message.topic(), message.partition(), message.offset(), message.key(), message.value());
+	}
 
 	
 	// START - Consume message with multiple consumer instances

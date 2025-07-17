@@ -33,14 +33,19 @@ public class SpringBootKafkaProducerApplication {
 	@PostMapping("/publish")
 	public String publish(@RequestParam String topic, @RequestBody String message) {
 		logger.info("Publishing message '{}' to '{}' topic", message, topic);
+//		strKafkaTemplate.send(topic, message);
+		 // To ensure message key is unique, we can use a random number as key, required for partitioning
 		strKafkaTemplate.send(topic, String.valueOf(new Random().nextInt()), message);
 		return "Message published successfully";
 	}
-	
+
+	// http://localhost:7071/publishObj?topic=test1
 	@PostMapping("/publishObj")
 	public String publishObject(@RequestParam String topic, @RequestBody Greeting message) {
 		logger.info("Publishing message '{}' to '{}' topic", message, topic);
-		objKafkaTemplate.send(topic, message);
+//		strKafkaTemplate.send(topic, message);
+		 // To ensure message key is unique, we can use a random number as key, required for partitioning
+		objKafkaTemplate.send(topic, String.valueOf(new Random().nextInt()), message);
 		return "Message published successfully";
 	}	
 
