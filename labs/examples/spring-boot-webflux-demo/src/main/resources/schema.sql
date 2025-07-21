@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS product;
+CREATE TABLE product (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    price DOUBLE NOT NULL
+); 
