@@ -12,6 +12,11 @@ public class HelloController {
         return "Hello, world! This is public to everyone";
     }
 
+    @GetMapping("/greetings")
+    public String greetings() {
+        return "Hello!!!";
+    }
+
     @GetMapping("/public")
     public String publicEndpoint() {
         return "Everyone can see this";

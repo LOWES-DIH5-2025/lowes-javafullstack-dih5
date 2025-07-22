@@ -34,7 +34,7 @@ public class WebSecurityConfig {
             .securityMatcher("/**")
             .authorizeHttpRequests(registry -> registry
                     .requestMatchers("/").permitAll()
-//                    .requestMatchers("/public/**").permitAll()
+                    .requestMatchers("/public/**").permitAll()
                     .requestMatchers("/auth/login").permitAll()
                     .requestMatchers("/admin").hasRole("ADMIN")
                     .anyRequest().authenticated()
