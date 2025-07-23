@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: scloud-auth-service
+  datasource:
+    url: jdbc:h2:mem:auth-db
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 7077
+
+security:
+  jwt:
+    secret-key: springsecurityjwtsecret
+    token-duration: 1D
+
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+
