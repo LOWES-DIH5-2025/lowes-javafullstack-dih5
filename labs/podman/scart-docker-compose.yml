@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  registry-service:
+      image: scart/registry-service
+      container_name: registry-service
+      ports:
+        - 8761:8761
+      networks:
+        - scart  
+  
+  gateway-service:
+      image: scart/gateway-service
+      container_name: gateway-service
+      ports:
+        - 8111:8111 
+      depends_on:
+        - registry-service
+      networks:
+        - scart
+      environment:
+        REGISTRY_SERVER_HOST: registry-service  
+
+  product-service:
+      image: scart/product-service
+      container_name: product-service
+      ports:
+        - 8091:8091 
+      depends_on:
+        - gateway-service
+      networks:
+        - scart  
+      environment:
+        REGISTRY_SERVER_HOST: registry-service
+                        
+networks:
+  scart:
