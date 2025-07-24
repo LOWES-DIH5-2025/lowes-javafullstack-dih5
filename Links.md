@@ -32,5 +32,9 @@
 
 `https://forms.gle/XBHvo1YjfuSRcaA38`
 
+### Messaging, Kafka, Reactive Microservices, Testing and Security Assessment - 08
+
+`https://forms.gle/yHUWkoMW9T672u857`
+
 ### Softwares
 `https://drive.google.com/drive/folders/1dAGEhUl2ESNJwN9AI36AtyMtxZ7Ss1VB?usp=sharing`
