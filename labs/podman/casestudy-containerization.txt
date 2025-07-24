@@ -1,0 +1,111 @@
+#Containerize Registry Service
+${PROJECT_HOME}/labs/examples/shopping-cart-registry-service
+#Linux/Mac
+chmod +x mvnw
+./mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/registry-service:latest .
+#Windows
+mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/registry-service:latest .
+
+#Containerize Product Service
+${PROJECT_HOME}/labs/examples/shopping-cart-product-service
+#Linux/Mac
+chmod +x mvnw
+./mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/product-service:latest .
+#Windows
+mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/product-service:latest .
+
+#Containerize Customer Service
+${PROJECT_HOME}/labs/examples/shopping-cart-customer-service
+#Linux/Mac
+chmod +x mvnw
+./mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/customer-service:latest .
+#Windows
+mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/customer-service:latest .
+
+#Containerize Order Service
+${PROJECT_HOME}/labs/examples/shopping-cart-order-service
+#Linux/Mac
+chmod +x mvnw
+./mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/order-service:latest .
+#Windows
+mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/order-service:latest .
+
+#Containerize Gateway Service
+${PROJECT_HOME}/labs/examples/shopping-cart-gateway-service
+#Linux/Mac
+chmod +x mvnw
+./mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/gateway-service:latest .
+#Windows
+mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/gateway-service:latest .
+
+#Containerize Admin Service
+${PROJECT_HOME}/labs/examples/shopping-cart-admin-service
+#Linux/Mac
+chmod +x mvnw
+./mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/admin-service:latest .
+#Windows
+mvnw clean package -DskipTests
+podman build --platform linux/amd64 -t scart/admin-service:latest .
+
+#Run Registry, Product and Gateway Services as podman containers
+podman network create scart
+
+podman run -d --name=registry-service --network scart -p 8761:8761 scart/registry-service
+
+podman run -d --name=product-service --network scart -p 8091:8091 -e "REGISTRY_SERVER_HOST=<registry-ip-address>" scart/product-service
+
+podman run -d --name=gateway-service --network scart -p 8111:8111 -e "REGISTRY_SERVER_HOST=<registry-ip-address>" scart/gateway-service
+
+podman run -d --name=admin-service --network scart -p 7777:7777 -e "REGISTRY_SERVER_HOST=1<registry-ip-address>" scart/admin-service
+
+#Start Kafka
+podman run -d --name kafka1 --hostname kafka1 --network scart -p 9092:9092 -e KAFKA_NODE_ID=1 -e KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT -e KAFKA_LISTENERS=INTERNAL://kafka1:29092,CONTROLLER://kafka1:29093,EXTERNAL://0.0.0.0:9092 -e KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka1:29092,EXTERNAL://192.168.1.30:9092 -e KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL -e KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka1:29093 -e KAFKA_PROCESS_ROLES=broker,controller -e KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 -e KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1 -e CLUSTER_ID=ciWo7IWazngRchmPES6q5A== -e KAFKA_LOG_DIRS=/tmp/kraft-combined-logs confluentinc/cp-kafka
+
+#Run Customer and Order Services as docker containers
+podman run -d --name=customer-service -p 8092:8092 --network scart -e "REGISTRY_SERVER_HOST=<registry-ip-address>" -e "KAFKA_BOOTSTRAP_SERVERS=<kafka-ip-address>:9092" scart/customer-service
+
+podman run -d --name=order-service -p 8093:8093 --network scart -e "REGISTRY_SERVER_HOST=<registry-ip-address>" -e "KAFKA_BOOTSTRAP_SERVERS=<kafka-ip-address>:9092" scart/order-service
+
+#Create Products
+POST http://localhost:8111/shoppingcart/api/products
+
+{
+	"id": "1",
+	"name":"iPhone 15",
+	"category": "Mobiles",
+	"manufacturer": "Apple"
+}
+
+#Create Customers
+POST http://localhost:8111/shoppingcart/api/customer/customers
+
+{
+    "name": "Anil",
+    "age": 40,
+    "gender": "Male",
+    "prime": false,
+    "creditLimit": 10000,
+    "address": "Koramangala",
+    "location": "Bangalore"
+}
+
+#Create Orders
+POST http://localhost:8111/shoppingcart/api/order/orders
+
+{
+    "customerId": "1",
+	"productId": 2,
+    "quantity": 1,
+    "price": 2000
+}

@@ -1,0 +1,134 @@
+
+
+#Working with Podman (Essential Commands)
+podman version								(=> Podman version)
+podman info								(=> Podman details)
+podman images								(=> Lists images)
+podman ps								(=> Lists active containers)
+podman ps -as								(=> Lists all containers)
+podman run <image path> <optional args>					(=> Starts container)
+podman run -e "env_var_name=another_value" <image id>			(=> Start container with environmental variables)
+podman stop <container id/name>						(=> Stop container)
+podman start <container id/name>					(=> Stop container)
+podman rm <container id/name>						(=> Remove container)
+podman rmi <image id/name>						(=> Remove image)
+podman pull <image id/name>						(=> Pull image from Hub)
+podman inspect <container id/name>					(=> List podman container detail)
+podman build <podmanfilepath> <target image path>			(=> Build image from Dockerfile)
+podman build -t <imagename> --build-arg JAR_FILE=<path> .		(=> Build image with command line args)
+podman exec -it <container name> /bin/bash				(=> Connect to running container in bash mode)
+podman exec -it <container name> /bin/sh				(=> Connect to running container in sh mode)
+podman commit <container name> <imagename>				(=> Commits container changes into an image)
+
+#Working with Podman (All Commands)
+podman attach <container id/name>					(=> Attach local standard input, output, and error streams to a running container)
+podman build <docfilepath> <targetimage> <docfiledir>			(=> Build an image from a Dockerfile)
+podman commit <container name> <imagename>			    	(=> Create a new image from a container's changes)
+podman cp <srcpath> <targetpath>					(=> Copy files/folders between a container and the local filesystem)
+podman create <containeroptions> <imagename>				(=> Create a new container)
+podman diff <container id/name>						(=> Inspect changes to files or directories on a container's filesystem)
+podman events      							(=> Get real time events from the server)
+podman exec  -it <container name> <commands>				(=> Run a command in a running container)
+podman export      							(=> Export a container's filesystem as a tar archive)
+podman history <image id/name>						(=> Show the history of an image)
+podman images     							(=> List images)
+podman import      							(=> Import the contents from a tarball to create a filesystem image)
+podman info        							(=> Display system-wide information)
+podman inspect <container id/name>					(=> Return low-level information on Podman objects)
+podman kill <container id/name>						(=> Kill one or more running containers)
+podman load        							(=> Load an image from a tar archive or STDIN)
+podman login       							(=> Log in to a Docker registry)
+podman logout      							(=> Log out from a Docker registry)
+podman logs <container id/name>						(=> Fetch the logs of a container)
+podman pause <container id/name>					(=> Pause all processes within one or more containers)
+podman port  <container id/name>					(=> List port mappings or a specific mapping for the container)
+podman ps        							(=> List active containers)
+podman ps -a       							(=> List all containers)
+podman pull <image name>						(=> Pull an image or a repository from a registry)
+podman push <image name>						(=> Push an image or a repository to a registry)
+podman rename <container name>  <container newname>			(=> Rename a container)
+podman restart  <container id/name>					(=> Restart one or more containers)
+podman rm <container id/name>      					(=> Remove one or more containers)
+podman rmi <image id/name>         					(=> Remove one or more images)
+podman run <image name>							(=> Run a command in a new container)
+podman save 								(=> Save one or more images to a tar archive (streamed to STDOUT by default))
+podman search      							(=> Search the Docker Hub for images)
+podman start  <container id/name>					(=> Start one or more stopped containers)
+podman stats  <container id/name>					(=> Display a live stream of container(s) resource usage statistics)
+podman stop  <container id/name>					(=> Stop one or more running containers)
+podman tag <sourceimage:tag> <targetimage:tag>				(=> Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE)
+podman top <container id/name>						(=> Display the running processes of a container)
+podman unpause  <container id/name>					(=> Unpause all processes within one or more containers)
+podman update  <container id/name>					(=> Update configuration of one or more containers)
+podman version     							(=> Show the podman version information)
+podman wait  <container id/name>					(=> Block until one or more containers stop, then print their exit codes)
+
+#Podman Getting Started
+podman run -d -p 80:80 docker/getting-started
+
+#Hello World Podman Example
+podman build -t hello-world-podman:latest .
+podman run -d -p 8080:8080 --name="hello-godmanpodman" hello-world-podman
+
+#Hello World Podman Example with build argument
+podman build -t hello-world-podman:latest --build-arg JAR_FILE=./target/*.jar .
+
+#Hello World podman Example with environmental variable
+podman run -p 8090:9090 -e "SERVER_PORT=9090" hello-world-podman
+
+#Jenkins Podman image setup Example
+podman pull jenkins
+podman run -p 8080:8080 -p 50000:50000 jenkins
+3df307ca21874a66a0d10a8a9c3bb8		(=> Auth key)
+
+#Ngnix
+podman run --detach --publish=80:80 --name=webserver nginx
+podman run -d -p 80:80 --name=webserver nginx
+
+#MySQL
+podman run -d --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql
+
+#Save Image to Disk
+podman save -o images.tar image1 [image2 ..]
+
+#Load Image from Disk
+podman load -i images.tar
+
+#Export Container to Disk
+podman export -o myContainner1.tar container1
+
+#Import Container from Disk
+podman import myContainer1
+
+
+#Delete image
+podman image rm <imageid>
+podman image rm <imageid>
+podman rmi <imageid>
+
+#Login to Docker Hub
+podman login docker.io
+
+#Tag image
+podman tag <sourceimage:tag> <targetimage:tag>
+
+podman tag hello-world-podman docker.io/dockrtraining/hello-world-podman
+
+#Push image to podmanHub Registry
+podman push username/repository:tag
+
+podman push dockrtraining/hello-world-podman
+
+#Pull image from podmanHub Registry
+podman pull dockrtraining/hello-world-podman
+
+#List podman Images
+podman image ls
+
+#Run podman image
+podman run -p 8080:8080 username/repository:tag
+
+podman run -d -p 8080:8080 dockrtraining/hello-world-podman
+
+#Logout from Docker Hub
+podman logout
