@@ -1,0 +1,5 @@
+#Reference: https://github.com/jenkinsci/docker/blob/master/README.md
+#Running Jenkins as Docker 
+docker run --name jenkins -d -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home --restart=on-failure jenkins/jenkins
+
+docker run --name jenkins17 -d -p 6060:8080 -p 50006:50000 -v jenkins_home17:/var/jenkins_home --restart=on-failure jenkins/jenkins:jdk17
