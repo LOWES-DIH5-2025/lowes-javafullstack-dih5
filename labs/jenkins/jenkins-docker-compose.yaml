@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # jenkins:
+  #   image: jenkins/jenkins:lts
+  #   container_name: jenkins
+  #   ports:
+  #     - "8080:8080"
+  #     - "50000:50000"
+  #   volumes:
+  #     - jenkins_home:/var/jenkins_home
+  #   restart: on-failure
+  #   networks:
+  #     - jenkins-network
+
+  jenkins17:
+    image: jenkins/jenkins:jdk17
+    container_name: jenkins17
+    ports:
+      - "6060:8080"
+      - "50006:50000"
+    volumes:
+      - jenkins_home17:/var/jenkins_home
+    restart: on-failure
+    networks:
+      - jenkins-network
+
+volumes:
+  # jenkins_home:
+  jenkins_home17:
+
+networks:
+  jenkins-network:
+    driver: bridge
