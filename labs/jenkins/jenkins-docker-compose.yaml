@@ -1,3 +1,7 @@
+# Run below command to start jenkins
+# docker compose -f jenkins-docker-compose.yaml up -d
+# podman compose -f jenkins-docker-compose.yaml up -d
+
 version: '3.8'
 
 services:
@@ -14,7 +18,7 @@ services:
   #     - jenkins-network
 
   jenkins17:
-    image: jenkins/jenkins:jdk17
+    image: jenkins/jenkins:lts-jdk17
     container_name: jenkins17
     ports:
       - "6060:8080"
