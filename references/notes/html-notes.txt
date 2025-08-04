@@ -1,0 +1,46 @@
+Webapps
+---
+    Static
+    Dynamic
+
+
+WebApps Layering
+---------
+Structural Layer - HTML
+Presentation Layer - CSS
+Interaction Layer - JAVASCRIPT
+
+Layouts
+---
+
+1. Fluid -> google
+2. Fixed -> panasonic
+
+Elements
+---
+
+header
+    logo
+    nav
+
+body
+    Main
+
+footer
+
+Tag Types
+------
+
+1. Block Level Tags - div, header, footer, nav, ul, oi, p, h1-h6, main, section, article
+2. Inline Tags - image, a, input, button, span, form
+
+Semantic Tags
+-------
+    ul, ol, li, header, footer, etc..
+
+Non-Semantic Tags
+----
+    div, span
+
+
+
