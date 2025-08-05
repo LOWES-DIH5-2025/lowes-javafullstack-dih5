@@ -1,0 +1,54 @@
+/* Approach #3: External Stylesheet */
+
+body {
+    font-family: Fellix, Arial, sans-serif;
+    font-size: 12px;
+}
+
+/* 4. Combinator Selector */
+.frontend-topics h3{
+    text-align: center;
+}
+
+/* 5. Attribute Selector */
+[type="text"] {
+    color: red;
+}
+
+/* 6. Pseudo Selector */
+input:focus {
+    color: blue;
+    border-color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+.banner-cta {
+    background-color: yellow;
+    border: 5px solid;
+    padding: 10px;
+    border-radius: 100px;
+    margin: 10px;
+    position: relative;
+    top: 380px;
+    left: 175px;
+    opacity: 0.8;
+}
+
+.image-box {
+    background-image: url("../images/nature.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    border: 1px solid blue;
+    padding: 10px;
+    border-radius: 50px;
+    margin: 10px;
+    width: 500px;
+    height: 400px;
+}
+
+
+  

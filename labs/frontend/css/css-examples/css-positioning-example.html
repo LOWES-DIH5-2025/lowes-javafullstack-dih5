@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Position Example</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        margin: 10px;
+      }
+
+      .static {
+        position: static;
+        background-color: lightcoral;
+      }
+
+      .relative {
+        position: relative;
+        top: 100px;
+        left: 100px;
+        background-color: lightgreen;
+      }
+
+      .absolute {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        background-color: lightpink;
+      }
+
+      .fixed {
+        position: fixed;
+        top: 40px;
+        right: 40px;
+        background-color: lightyellow;
+      }
+
+      .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+        background-color: lightgray;
+      }
+
+      .container {
+        height: 500px;
+        background-color: #f0f0f0;
+        overflow: auto;
+        padding: 10px;
+      }
+
+      .content {
+        height: 1000px;
+        background-color: #e0e0e0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>
+        Welcome to Positioning example facilisis luctus, metus Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
+        sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+        ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet
+        est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum
+        sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget
+        tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus
+        enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
+        Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue,
+        eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
+        tincidunt quis, accumsan porttitor, facilisis luctus, metus Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
+        sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+        ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet
+        est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum
+        sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget
+        tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus
+        enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
+        Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue,
+        eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi,
+        tincidunt quis, accumsan porttitor, facilisis luctus, metus Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas. Vestibulum tortor quam,
+      </p>
+    </div>
+
+    <div class="box static">Static</div>
+    <div class="box relative">Relative</div>
+    <div class="box absolute">Absolute</div>
+    <div class="box fixed">Fixed</div>
+    <div class="box sticky">Sticky</div>
+
+    <!-- <div class="container">
+      <div class="content">Scroll down to see sticky behavior</div>
+    </div> -->
+    <div>
+      <p>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada
+        fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
+        ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam
+        egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend
+        leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum
+        erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean
+        fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci,
+        sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar
+        facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor
+        neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat
+        volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis
+        luctus, metus Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat
+        vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet
+        quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat
+        eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+        Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet,
+        wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum
+        rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis
+        pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus Pellentesque habitant morbi tristique senectus
+        et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+        feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
+        sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
+        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
+        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare
+        sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
+        ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in
+        turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus
+        faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.
+        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+        facilisis luctus, metus
+      </p>
+    </div>
+  </body>
+</html>

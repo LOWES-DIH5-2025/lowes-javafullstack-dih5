@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Typography Tags</title>
+    <!-- Approach #2: Internal Sytle-->
+    <style>
+      /* Sytle Selectors.*/
+
+      /* Style Definition */
+      /* selector {
+          key:value
+        } */
+
+      /* 1. Element Selector */
+      h2 {
+        font-size: 25px;
+        font-family: Fellix, Arial, sans-serif;
+        color: blue;
+        background-color: rgb(1, 33, 106);
+        border: 1px solid;
+      }
+
+      /* 2. ID Selector */
+      #paragraph-span {
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      /* 3. Class Selector */
+      .frontend-subtopics {
+        color: #ff00ff;
+      }
+
+      .backend-subtopics {
+        color: rgb(255, 100, 100);
+      }
+    </style>
+
+    <!-- Linking External Stylesheet-->
+    <link rel="stylesheet" href="./assets/styles/main.css" />
+  </head>
+  <body>
+    <h1>DIH Full Stack Training</h1>
+    <span><a href="index.html">Go Back</a></span>
+    <!-- Approach #1: Inline Style -->
+    <h2
+      style="
+        font-size: 25px;
+        color: red;
+        background-color: yellow;
+        border: 1px solid;
+      "
+    >
+      Front End
+    </h2>
+    <div class="frontend-topics">
+      <h3>HTML</h3>
+      <h4>Typography</h4>
+      <h5>h1-h6</h5>
+      <p>Heading tags</p>
+      <h5>p</h5>
+      The &lt;p&gt; tag defines a <strong>paragraph</strong>. <br />
+      Browsers automatically add a <em>single blank line</em>
+      <span id="paragraph-span"> before and after </span> each &lt;p&gt;
+      element.
+      <pre>
+Browsers automatically add some white space       (a margin) before</pre
+      >
+      <h4>Forms</h4>
+      <h4>Tables</h4>
+
+      <h3 class="frontend-subtopics">CSS</h3>
+      <h3 class="frontend-subtopics">Bootstrap</h3>
+      <h3 class="frontend-subtopics">React JS</h3>
+    </div>
+    <hr />
+
+    <h2>Back End</h2>
+    <h3 class="backend-subtopics">Java</h3>
+    <h3 class="backend-subtopics">Spring Boot</h3>
+    <h3 class="backend-subtopics">Microservices</h3>
+  </body>
+</html>
