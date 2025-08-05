@@ -36,5 +36,9 @@
 
 `https://forms.gle/yHUWkoMW9T672u857`
 
+### Microservices Deployment, Observability, Podman, K8s, DevOps and Cloud Assessment - 09
+
+`https://forms.gle/QfjSjxJd5fMnMhqCA`
+
 ### Softwares
 `https://drive.google.com/drive/folders/1dAGEhUl2ESNJwN9AI36AtyMtxZ7Ss1VB?usp=sharing`
