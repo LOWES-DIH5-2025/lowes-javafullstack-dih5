@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Card Examples</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8">
+      <!-- Simple Card -->
+      <div class="bg-white rounded-xl shadow-md p-6 max-w-sm w-full">
+        <h2 class="text-xl font-bold text-indigo-700 mb-2">Simple Card</h2>
+        <p class="text-gray-600 mb-4">
+          This is a basic card using Tailwind CSS.
+        </p>
+        <a href="#" class="text-indigo-600 underline hover:text-indigo-800"
+          >Learn More</a
+        >
+      </div>
+      <!-- Card with Image -->
+      <div
+        class="bg-white rounded-xl shadow-md max-w-sm w-full overflow-hidden"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+          alt="Nature"
+          class="w-full h-40 object-cover"
+        />
+        <div class="p-6">
+          <h2 class="text-xl font-bold text-indigo-700 mb-2">
+            Card with Image
+          </h2>
+          <p class="text-gray-600 mb-4">
+            This card includes an image at the top.
+          </p>
+          <button
+            class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+          >
+            Action
+          </button>
+        </div>
+      </div>
+      <!-- Card with Footer -->
+      <div class="bg-white rounded-xl shadow-md max-w-sm w-full flex flex-col">
+        <div class="p-6 flex-1">
+          <h2 class="text-xl font-bold text-indigo-700 mb-2">
+            Card with Footer
+          </h2>
+          <p class="text-gray-600 mb-4">
+            This card has a footer section for extra info.
+          </p>
+        </div>
+        <div class="bg-gray-100 px-6 py-4 rounded-b-xl text-sm text-gray-500">
+          Footer content here
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

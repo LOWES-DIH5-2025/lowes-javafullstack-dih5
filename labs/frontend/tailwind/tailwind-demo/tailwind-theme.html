@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Theme Demo</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <style>
+      .theme-toggle {
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen"
+  >
+    <div
+      class="p-8 max-w-xl w-full rounded-xl shadow-md bg-white dark:bg-gray-800"
+    >
+      <button
+        id="toggleTheme"
+        class="theme-toggle mb-6 px-4 py-2 rounded bg-indigo-600 text-white dark:bg-indigo-400 dark:text-gray-900"
+      >
+        Toggle Theme
+      </button>
+      <h1 class="text-3xl font-bold mb-4 text-indigo-700 dark:text-indigo-300">
+        Tailwind Theme Example
+      </h1>
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        This is a paragraph demonstrating
+        <span class="font-semibold text-indigo-600 dark:text-indigo-400"
+          >light</span
+        >
+        and
+        <span class="font-semibold text-indigo-400 dark:text-indigo-600"
+          >dark</span
+        >
+        theme support.
+      </p>
+      <div class="mb-4">
+        <span
+          class="inline-block px-3 py-1 rounded bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+          >Light theme badge</span
+        >
+        <span
+          class="inline-block px-3 py-1 rounded bg-gray-800 text-gray-200 dark:bg-gray-200 dark:text-gray-800 ml-2"
+          >Dark theme badge</span
+        >
+      </div>
+      <a
+        href="#"
+        class="text-indigo-600 underline hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-200"
+        >This is a themed link</a
+      >
+    </div>
+    <script>
+      const btn = document.getElementById("toggleTheme");
+      btn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+    </script>
+  </body>
+</html>
