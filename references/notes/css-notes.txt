@@ -1,0 +1,80 @@
+CSS
+	Types
+		Inline CSS
+		Internal CSS
+		External CSS
+
+	Syntax
+			
+	Selector {
+		Style Definition
+		prop-name: value
+	}
+
+	Selector Types
+
+	Element Selector
+	ID Selector - Not Recommended
+	Class Selector - Recommended
+	Attribute Selector
+	Pseudo Selector
+	Combinator Selector
+
+	<div id="div1" class="div1"> <p> Hello </p> </div>
+
+     	div { // Option #1:  Use inline-block to display the divs side by side
+       		display: inline-block
+	}
+
+	#div1 {
+	}
+
+   	.div1 { // Option #2: Use float property to display the divs side by side
+			float: left|right
+	}
+
+	.banner-wrapper {} // for creating the banner image
+
+ 	Stylying Concepts
+    	
+	Box Model
+		Width and Height of an element is calculated based on Content Width x Height, Padding, Border and Margin.
+
+	Display
+		None
+		Inline
+		Inline-Block
+		Flex Model
+		Grid Model
+
+
+	Position
+		Static - 
+		relative		
+		fixed - Recommended to fix the position always
+		absolute - Not Eecommended
+		sticky - Recommended to fix based on scroll position
+
+		e.g:
+		div {
+  			position: static,
+			top: 100px;
+      			left: 100px
+		}
+	
+	Responsive Design
+		
+		1] meta - viewport
+		2] media queries
+
+			
+			
+			@media only screen and (minwidth="") {
+			}
+			
+			XS 
+			SM
+			MD
+			LG
+			XL
+			XXL

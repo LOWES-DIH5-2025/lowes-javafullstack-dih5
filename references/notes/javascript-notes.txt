@@ -1,0 +1,61 @@
+Javascript History
+Browser Components
+	- HTML Renderer
+	- CSS Parser
+	- Javascript Engine
+Javascript Basics
+	Date Types - string, number, boolean
+		var name = 'Lowes';
+		var name = new String();
+	Variables
+	Operators
+	Dynamic Typing
+	Variable Hoisting
+	Arrays
+		var skills = [];
+		var skills = new Array();
+		push, pop, shift, unshift, slice, splice
+	Control Structures [IF-ELSE, SWITCH-CASE]
+	Loops [For, While, Do..While]
+	Strict Mode
+	Window Scope / Global Scope
+	
+Functions
+	Declaration
+	Invocation
+	Arguments vs Parameters		
+	Pass by Value
+	Pass by Reference
+	Call vs Apply vs Bind
+	
+	Function Types
+		1] Named Function
+		2] Anonymous Function
+		3] IIFE (Immediately Invoked Function Expression) / Self Invoking Anonymous Function		
+		4] Assigning Functions to Variables
+		5] Passing Functions as Arguments
+		6] Nested/Inner Functions			
+		7] Functions as Event Handlers
+		
+	Functions as Objects
+	Function Constructors => Class => Template / Blueprint to create object
+		- one of the design pattern
+	Function Prototypes
+		Object.prototype -> Car.prototype
+		Object.prototype -> Array.prototype
+		Prototype Chain
+		Protypal Inheritance
+		__proto__
+	Closures
+		- one of the design pattern
+		- Enables the access of private scope variables as local variables
+	
+	ES6 features
+	
+	
+	
+		
+		
+		
+		
+		

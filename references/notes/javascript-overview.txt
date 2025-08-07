@@ -1,0 +1,67 @@
+History & Background
+	- NCSA released first graphical web browser in 1993 - NCSA Mosaic 
+	- NCSA -> National Center for Supercomputing Applications
+	- Mosaic Communications founded with team members from NCSA Mosaic in 1994
+	- Mosaic Communications developed Mosaic Netscape (codenamed 'Mozilla') to replace NCSA Mosaic
+	- Mosaic Communications re-christened to Netscape Communications in 1994
+	- Mosaic Netscape renamed to Netscape Navigator
+	- Netscape Communications collobarated with Sun Microsystems to include Java in Netscape Navigator
+	- Netscape wanted to create a scripting language which brings more dynamism and complement Java
+	- Brenden Eich came up with specification to create scripting language in 1995
+	- Iniatially named as 'Mocha', then 'LiveScript' and finally 'JavaScript'
+	- Server Side Scripting introduced by Netscape known as Netscape Enterprise Server
+	- Netscape submitted JavaScript to ECMA to create standard specification in 1996	
+	
+Introduction
+	- High-Level and Interpreted Programming Language
+	- Dynamic, Weakly Typed, Prototype Based and Multi Paradigm
+	- Conforms to the ECMAScript Specification
+	- Supports Event Driven, Functional and Imperative
+	- Influenced by Self and Scheme Programming Languages
+	
+	
+Whats is ECMA?
+	- stands for European Computer Manufacturers Association
+	- standards organization for information and communication systems
+	- Re-christened as Ecma International on 1994
+	- ECMAScript (or ES) is scripting language specification (standadized by Ecma International in ECMA-262)
+	- ECMAScript v1 -> 1997 -> JavaScript conforms to ECMA v1
+	- ECMAScript 2015 -> ES 6
+	- ECMAScript 2018 -> ES 9
+	- ECMAScript 2024 -> ES 15 -> Latest specification
+		|
+		|__ JavaScript
+				|
+				|___ TypeScript
+				|
+				|___ CoffeeScript
+		|
+		|__ ActionScript
+		|
+		|__ JScript -> Server Side processing -> ASP/.Net
+	
+	
+JavaScript/Browser/Rendering Engines
+	- SpiderMonkey/Gecko (Mozila/FireFox)  <- First version developed by Brenden Eich in 1995 for Netscape Navigator web browser
+	- V8/Blink (Google/Chrome) -> Chromium
+	- JavaScriptCore/WebKit (Apple/Safari) <- Part of WebKit browser engine (WebCore + JavaScriptCore)
+	- Chakra/Trident (Microsoft/Edge/IE) -> Chromium
+	- Carakan/Presto (Opera upto v15) -> Moved- to Blink/Chromium
+	
+	- Node JS <- Chromium
+		|
+		|__ NPM Manager
+	- Nashorn <- Oracle
+	- Rhino <- Mozila
+	
+	
+JavaScript Features
+	- Imperative and Structured
+	- Dynamic
+		- Typing
+		- Run-time Evaluation
+	- Protype-based
+	- Functional	-> call(), bind()
+	- Delegative
+		- Functions as roles (Traits & Mixins)	-> call(), apply()
+		- Object composition and Inheritance
