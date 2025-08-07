@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    "use strict";
+	document.write('strict mode demo - check browser console for error message');
+    var isLoggedIn = true;	// throws error
+    isLoggedIn = 'Hello';
+
+    //syntax for strict mode --function level/local scope level
+    function myTest(){
+        //"use strict";
+        var testing = "strict mode demo - local scope"; //throws error
+		console.log(testing);
+    console.log(isLoggedIn);
+    }
+    myTest();  
+  </script>
+</body>
+</html>
