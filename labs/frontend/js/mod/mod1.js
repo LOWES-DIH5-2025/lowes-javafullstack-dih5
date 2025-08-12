@@ -1,3 +1,3 @@
 export const greetings = "Hello!!!"
-console.log(greetings)
 
+console.log("Module 1 loaded")
