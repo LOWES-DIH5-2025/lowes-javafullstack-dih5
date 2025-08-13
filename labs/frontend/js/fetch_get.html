@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Fetch API Client - GET Request</h2>
+    <div id="getUsers">
+      <button
+        type="button"
+        onclick="fetchData('https://jsonplaceholder.typicode.com/posts', processResponse)"
+      >
+        Get Users
+      </button>
+    </div>
+    <br />
+    <div id="getUser">
+      <button
+        type="button"
+        onclick="fetchData('https://jsonplaceholder.typicode.com/posts/1', processResponse)"
+      >
+        Get User
+      </button>
+    </div>
+    <br />
+    <div id="output"></div>
+
+    <script>
+      function fetchData(url, callback) {
+        fetch(url, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then((response) => {
+            console.log(`StatusCode: ${response.status}`);
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            callback(data);
+          })
+          .catch((error) => {
+            document.getElementById("output").innerHTML = "Error: " + error;
+          });
+      }
+
+      // Callback function to process the response
+      function processResponse(data) {
+        console.log(data);
+        var dataStr = JSON.stringify(data);
+        document.getElementById("output").innerHTML = dataStr;
+      }
+    </script>
+  </body>
+</html>

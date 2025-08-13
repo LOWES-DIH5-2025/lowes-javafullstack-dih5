@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html>
-<body>
-	<h2>AJAX Client - GET Request</h2>
-	<div id="getUsers">
-		<!-- https://reqres.in/api/users -->
-		<!-- http://localhost:8091/accounts -->
-		<!-- http://localhost:8111/bankingapp/api/accounts -->
-		<button type="button" onclick="loadDoc('http://localhost:8111/bankingapp/api/accounts', myFunction)">Get Users</button>
-	</div>
-	<br>
-	<div id="getUser">
-		<button type="button" onclick="loadDoc('https://reqres.in/api/users/1', myFunction)">Get User</button>
-	</div>	
-	<br>
-	<div id="output">
-	</div>	
+  <body>
+    <h2>AJAX Client - GET Request</h2>
+    <div id="getUsers">
+      <!-- https://reqres.in/api/users -->
+      <!-- http://localhost:8091/accounts -->
+      <!-- http://localhost:8111/bankingapp/api/accounts -->
+      <button
+        type="button"
+        onclick="loadDoc('https://jsonplaceholder.typicode.com/posts', myFunction)"
+      >
+        Get Posts
+      </button>
+    </div>
+    <br />
+    <div id="getUser">
+      <button
+        type="button"
+        onclick="loadDoc('https://jsonplaceholder.typicode.com/posts/1', myFunction)"
+      >
+        Get Post
+      </button>
+    </div>
+    <br />
+    <div id="output"></div>
 
-	<script>
-		function loadDoc(url, cFunction) {
-			var xhttp;
-			xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				console.log(`ReadyStateCode: ${this.readyState}, StatusCode: ${this.status} ` )
-				if (this.readyState == 4 && this.status == 200) {
-					cFunction(this);
-				}
-			};	
-			xhttp.open("GET", url, true);
-			xhttp.setRequestHeader("Accept", "application/json");
-			xhttp.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0MkB0ZXN0LmNvbSIsImlhdCI6MTcxMDgzOTM3NCwiZXhwIjoxNzEwOTI1Nzc0LCJlIjoidGVzdDJAdGVzdC5jb20iLCJhdSI6WyJST0xFX0FETUlOIl19.t2dbfG04fuIstpqE1S_o3cwKONXSN3i8DGp54qXQ22I");
-			// 	xhttp.setRequestHeader("withCredentials", "true");
+    <script>
+      function loadDoc(url, cFunction) {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          console.log(
+            `ReadyStateCode: ${this.readyState}, StatusCode: ${this.status} `
+          );
+          if (this.readyState == 4 && this.status == 200) {
+            cFunction(this);
+          }
+        };
+        xhttp.open("GET", url, true);
+        xhttp.setRequestHeader("Accept", "application/json");
+        // xhttp.setRequestHeader(
+        //   "Authorization",
+        //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0MkB0ZXN0LmNvbSIsImlhdCI6MTcxMDgzOTM3NCwiZXhwIjoxNzEwOTI1Nzc0LCJlIjoidGVzdDJAdGVzdC5jb20iLCJhdSI6WyJST0xFX0FETUlOIl19.t2dbfG04fuIstpqE1S_o3cwKONXSN3i8DGp54qXQ22I"
+        // );
+        // 	xhttp.setRequestHeader("withCredentials", "true");
 
-			xhttp.send();
-		}
+        xhttp.send();
+      }
 
-		// Callback function to process the response
-		function myFunction(xhttp) {
-			var reqData = JSON.parse(xhttp.responseText);
-			console.log(reqData);
-			var dataStr = JSON.stringify(reqData);
-			document.getElementById("output").innerHTML = dataStr;			
-		}
-	</script>
-</body>
+      // Callback function to process the response
+      function myFunction(xhttp) {
+        var reqData = JSON.parse(xhttp.responseText);
+        console.log(reqData);
+        var dataStr = JSON.stringify(reqData);
+        document.getElementById("output").innerHTML = dataStr;
+      }
+    </script>
+  </body>
 </html>
