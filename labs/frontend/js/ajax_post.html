@@ -1,43 +1,53 @@
 <!DOCTYPE html>
 <html>
-<body>
+  <body>
+    <div id="demo">
+      <h2>AJAX Client - POST Request</h2>
 
-	<div id="demo">
+      <!-- https://reqres.in/api/users -->
+      <!-- http://localhost:8091/accounts -->
+      <!-- http://localhost:8111/bankingapp/api/accounts -->
 
-		<h2>AJAX Client - POST Request</h2>
+      <button
+        type="button"
+        onclick="loadDoc('https://jsonplaceholder.typicode.com/posts', myFunction)"
+      >
+        Create Post
+      </button>
+    </div>
+    <br />
+    <div id="output"></div>
 
-				<!-- https://reqres.in/api/users -->
-		<!-- http://localhost:8091/accounts -->
-		<!-- http://localhost:8111/bankingapp/api/accounts -->
+    <script>
+      function loadDoc(url, cFunction) {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          console.log(
+            `ReadyStateCode: ${this.readyState}, StatusCode: ${this.status} `
+          );
+          if (this.readyState == 4 && this.status == 201) {
+            cFunction(this);
+          }
+        };
+        xhttp.open("POST", url, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        // xhttp.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0MkB0ZXN0LmNvbSIsImlhdCI6MTcxMDgzOTM3NCwiZXhwIjoxNzEwOTI1Nzc0LCJlIjoidGVzdDJAdGVzdC5jb20iLCJhdSI6WyJST0xFX0FETUlOIl19.t2dbfG04fuIstpqE1S_o3cwKONXSN3i8DGp54qXQ22I");
 
-		<button type="button" onclick="loadDoc('http://localhost:8111/bankingapp/api/accounts', myFunction)">Create User</button>
-	</div>
-	<br>
-	<div id="output">
-		
-	</div>
+        // xhttp.send('{"name":"Anil","job": "Software Engineer"}');
+        // xhttp.send('{"name": "Sunil","type": "SAVINGS","balance": 20000.0,"roi": 7.5,"active": true}');
 
-	<script>
-		function loadDoc(url, cFunction) {
-			var xhttp;
-			xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				console.log(`ReadyStateCode: ${this.readyState}, StatusCode: ${this.status} ` )
-				if (this.readyState == 4 && this.status == 201) {
-					cFunction(this);
-				}
-			};
-			xhttp.open("POST", url, true);
-			xhttp.setRequestHeader("Content-type", "application/json");
-			xhttp.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0MkB0ZXN0LmNvbSIsImlhdCI6MTcxMDgzOTM3NCwiZXhwIjoxNzEwOTI1Nzc0LCJlIjoidGVzdDJAdGVzdC5jb20iLCJhdSI6WyJST0xFX0FETUlOIl19.t2dbfG04fuIstpqE1S_o3cwKONXSN3i8DGp54qXQ22I");
+        let post = JSON.stringify({
+          title: "foo",
+          body: "bar",
+          userId: 1,
+        });
+        xhttp.send(post);
+      }
 
-			// xhttp.send('{"name":"Anil","job": "Software Engineer"}');			
-			xhttp.send('{"name": "Sunil","type": "SAVINGS","balance": 20000.0,"roi": 7.5,"active": true}');			
-
-		}
-		function myFunction(xhttp) {
-			document.getElementById("output").innerHTML = xhttp.responseText;
-		}
-	</script>
-</body>
+      function myFunction(xhttp) {
+        document.getElementById("output").innerHTML = xhttp.responseText;
+      }
+    </script>
+  </body>
 </html>
