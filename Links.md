@@ -44,6 +44,10 @@
 
 `https://forms.gle/AVijL365bQFGSBz67`
 
+### Javascript and Typescript Assessment - 11
+
+`https://forms.gle/nptac6K5GsmsZLwJA`
+
 ### Softwares
 
 `https://drive.google.com/drive/folders/1dAGEhUl2ESNJwN9AI36AtyMtxZ7Ss1VB?usp=sharing`
