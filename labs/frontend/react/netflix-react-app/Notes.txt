@@ -1,0 +1,119 @@
+
+Single Page Apps (SPA)
+----
+  Characteristics of SPA
+    1. Page should NOT Refresh
+    2. URL should change
+    3. History should be maintained w/o page refresh
+    4. Header and Footer should not be loaded again and again
+    5. In Between Header and Footer -- show the contextual updates
+    6. Active Menu should be set
+    7. Page Title should be changed
+
+  Frameworks / Libraries
+  ---------
+    #1. React JS (library)
+    #2. Angular 2+ (framework)
+    #3. Vue JS (framework)
+=================
+
+
+ReactJS 
+---
+  1. Quick Intro 
+  2. React React Project 
+      * file walkthru 
+      * how react apps are running? 
+          npm start 
+
+  3. Components
+  4. JSX 
+  5. Props
+  6. States
+  7. Events
+  8. Lists and Keys  -- looping 
+  9. Conditional Rendering
+  10. Styles
+      * inline Styles
+      * internal Styles
+      * external styles (bootstrap, index.css, App.css)
+        App.css will impact the descendants also.
+
+
+  11. Routing 
+  12. Integrating third party tools (bootstrap) 
+  13. REST API (CRUD)
+  15. Context API
+  16. Fragment
+  17. Build and Deployment
+
+
+
+Components
+---
+  Reusable block of code
+  1. Functional Components
+    1.1 Functional comp with Named Fn 
+    1.2 Functional comp with Anonymous fn 
+    1.3 Functional comp with Arrow Fn (Recommended)
+  2. Class Components (about to be Deprecated -- NOT Recommended any more)
+
+
+JSX Limitations 
+-------
+  * Will look like HTML. But really not.
+  * All tags must be self-closed or separately-closed 
+  * class attribute in element should become className
+  * JSX expressions must have one parent element.
+
+Install Chrome Extn:
+ https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
+
+
+Cross Component Communication
+------
+  1. Parent to Child Comp Communication
+      using Props
+  2. Child to Parent Comp Communication
+      using Props with Events and callback fn 
+  3. Any to Any Comp Communication 
+      1. using React context API (or)
+      2. using Redux / MobX / Zustand / Recoil (third party framework)
+
+Routing Steps:
+----
+  Step 1 : Identify the URLs 
+      Home        localhost:3000/
+      Netflix     localhost:3000/netflix
+      Users       localhost:3000/users
+      Products    localhost:3000/products
+
+
+  Step 2: Let's setup these urls in our app 
+
+  Step 3: Check the app. Click the menus. The pages will refresh. URL wont work properly
+
+  Step 4: What component should show up when we click on menus?
+    Home        localhost:3000/           HomePage Component
+    Netflix     localhost:3000/netflix    NetflixPage Component`
+    Products    localhost:3000/products   ProductsPage Component
+    Users       localhost:3000/users      UsersPage Component
+
+  Step 5: LEt's configure the Routing in App comp. 
+  Let's move our whole app under BrowserRouter of react-router-dom
+
+  Step 6: Let's check the app. Page will still refresh. Let's fix it. 
+    Replace <a href with <Link to
+
+      Context API and useContext Hook
+  ------
+
+  1. Create context using createContext() fn
+  2. Let's provide the data thru the context to the select number of Components
+  3. Get the data from the desired component using useContext() Hook
+
+  
+
+
+
+

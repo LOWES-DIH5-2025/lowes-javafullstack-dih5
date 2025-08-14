@@ -1,0 +1,26 @@
+.feature-section {
+  background: rgba(255,255,255,0.85);
+  border-radius: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.feature-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 1rem;
+  background: #f8f9fa;
+}
+.feature-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 32px rgba(33,147,176,0.12);
+}
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+  border-radius: 50%;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(33,147,176,0.10);
+}

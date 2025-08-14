@@ -1,0 +1,8 @@
+/* comp-specific */
+.subscription .subscription-info {
+  color: green;
+  background-color: yellow;
+  border: solid 3px green;
+  border-radius: 6px;
+  padding: 20px;
+}

@@ -1,0 +1,23 @@
+/* .banner-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 8px 32px rgba(46, 82, 152, 0.08);
+}
+
+.banner-img {
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: 0 2px 16px rgba(33,147,176,0.12);
+}
+
+.btn-gradient-blue {
+  background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 100%);
+  border: none;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.btn-gradient-blue:hover, .btn-gradient-blue:focus {
+  background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+  box-shadow: 0 4px 24px rgba(46, 82, 152, 0.18);
+} */
