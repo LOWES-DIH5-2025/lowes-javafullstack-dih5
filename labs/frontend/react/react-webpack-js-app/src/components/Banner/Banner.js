@@ -1,5 +1,6 @@
 import React from 'react';
 import './Banner.css';
+import { Link } from 'react-router-dom';
 
 const retailImages = [
   'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=800&q=80', // Clothing store
@@ -74,7 +75,7 @@ const Banner = () => {
               <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded-3 p-2 mb-2 small-cta-panel">
                 <h5 className="fw-bold text-primary mb-1" style={{ fontSize: '1.1rem' }}>{slide.headline}</h5>
                 <p className="mb-2 text-light" style={{ fontSize: '0.95rem' }}>{slide.message}</p>
-                <a href="#" className="btn btn-sm btn-gradient-blue text-white shadow-sm">{slide.cta}</a>
+                <Link to="/products" className="btn btn-sm btn-gradient-blue text-white shadow-sm">{slide.cta}</Link>
               </div>
             </div>
           ))}
