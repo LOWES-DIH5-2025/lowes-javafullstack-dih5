@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 // Sample product data
 // const products = [
@@ -98,9 +99,45 @@ const ProductCard = ({ product }) => {
 const ProductPage = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [addSuccess, setAddSuccess] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
 
   // 1. Component mount
   console.log('[1] ProductPage component rendered');
+
+  const handleAddProductClick = () => {
+    setShowModal(true);
+    setAddSuccess(false);
+    reset();
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    reset();
+  };
+
+  const onAddProduct = async (data) => {
+    try {
+      // Convert price and rating to numbers
+      const payload = {
+        title: data.title,
+        price: parseFloat(data.price),
+        description: data.description,
+        image: data.image,
+        rating: { rate: parseFloat(data.rating), count: 1 }
+      };
+      const response = await axios.post('https://fakestoreapi.com/products', payload);
+      console.log('[Add Product] API response:', response.data);
+      setAddSuccess(true);
+      setShowModal(false);
+      // Optionally, add to local products list
+      setProducts([response.data, ...products]);
+    } catch (error) {
+      alert('Failed to add product.');
+      console.error('[Add Product] Error:', error);
+    }
+  };
 
   useEffect(() => {
     // 2. Before API call
@@ -130,7 +167,17 @@ const ProductPage = () => {
 
   return (
     <div className="container py-4">
-      <h3 className="text-center mb-4">Our Products</h3>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h3 className="mb-0">Our Products</h3>
+        <button className="btn btn-success" onClick={handleAddProductClick}>
+          + Add Product
+        </button>
+      </div>
+      {addSuccess && (
+        <div className="alert alert-success" role="alert">
+          Product added successfully!
+        </div>
+      )}
       <div className="row g-4">
         {products.map(product => (
           <div className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex" key={product.id}>
@@ -138,6 +185,53 @@ const ProductPage = () => {
           </div>
         ))}
       </div>
+
+      {/* Add Product Modal */}
+      {showModal && (
+        <div className="modal show fade" tabIndex="-1" style={{ display: 'block', background: 'rgba(0,0,0,0.5)' }}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Add Product</h5>
+                <button type="button" className="btn-close" onClick={handleCloseModal}></button>
+              </div>
+              <form onSubmit={handleSubmit(onAddProduct)}>
+                <div className="modal-body">
+                  <div className="mb-3">
+                    <label htmlFor="title" className="form-label">Title</label>
+                    <input id="title" className={`form-control${errors.title ? ' is-invalid' : ''}`} {...register('title', { required: 'Title is required' })} placeholder="Product title" />
+                    {errors.title && <div className="invalid-feedback">{errors.title.message}</div>}
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="price" className="form-label">Price</label>
+                    <input id="price" type="number" step="0.01" className={`form-control${errors.price ? ' is-invalid' : ''}`} {...register('price', { required: 'Price is required', min: { value: 0.01, message: 'Minimum price is 0.01' } })} placeholder="Product price" />
+                    {errors.price && <div className="invalid-feedback">{errors.price.message}</div>}
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="description" className="form-label">Description</label>
+                    <textarea id="description" className={`form-control${errors.description ? ' is-invalid' : ''}`} {...register('description', { required: 'Description is required', minLength: { value: 10, message: 'At least 10 characters' } })} placeholder="Product description" />
+                    {errors.description && <div className="invalid-feedback">{errors.description.message}</div>}
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="image" className="form-label">Image URL</label>
+                    <input id="image" className={`form-control${errors.image ? ' is-invalid' : ''}`} {...register('image', { required: 'Image URL is required' })} placeholder="Image URL" />
+                    {errors.image && <div className="invalid-feedback">{errors.image.message}</div>}
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="rating" className="form-label">Rating (0-5)</label>
+                    <input id="rating" type="number" step="0.1" min="0" max="5" className={`form-control${errors.rating ? ' is-invalid' : ''}`} {...register('rating', { required: 'Rating is required', min: { value: 0, message: 'Min is 0' }, max: { value: 5, message: 'Max is 5' } })} placeholder="Rating" />
+                    {errors.rating && <div className="invalid-feedback">{errors.rating.message}</div>}
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Cancel</button>
+                  <button type="submit" className="btn btn-primary" disabled={isSubmitting}>Add Product</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
