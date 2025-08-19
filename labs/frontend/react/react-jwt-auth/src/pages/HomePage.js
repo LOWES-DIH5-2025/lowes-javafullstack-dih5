@@ -12,7 +12,8 @@ function HomePage() {
     // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0MkB0ZXN0LmNvbSIsImlhdCI6MTcxMDc1MjI1NCwiZXhwIjoxNzEwODM4NjU0LCJlIjoidGVzdDJAdGVzdC5jb20iLCJhdSI6WyJST0xFX0FETUlOIl19.6sIOBT6W0Tl_EM1uoOl-vFbcOglip6XEWA5Jy71dAso';
     // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     // axios.get('http://localhost:8091/accounts')
-    axios.get('http://localhost:8111/bankingapp/api/accounts')
+    // axios.get('http://localhost:8111/bankingapp/api/accounts')
+    axios.get('http://reqres.in/api/users?page=2')
       .then((res) => {
         console.log(res.data);
         // setAccounts(res.data);
