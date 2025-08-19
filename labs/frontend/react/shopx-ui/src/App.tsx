@@ -4,25 +4,32 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import ContactPage from './pages/ContactPage';
+import CheckoutPage from './pages/CheckoutPage';
 import Footer from './components/Footer/Footer';
+import { CartProvider } from './contexts/CartContext';
 
 
 function App() {
   // JSX - Javascript and XML
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
+    <CartProvider>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
 
-        <Routes>
-         <Route path="/" element={<HomePage />} />
-         <Route path="/products" element={<ProductPage />} />
-         <Route path="/contact" element={<ContactPage />} />
-        </Routes>
+          <main className="container py-4">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/products" element={<ProductPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/cart" element={<CheckoutPage />} />
+            </Routes>
+          </main>
 
-        <Footer />
-      </div>
-    </BrowserRouter>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

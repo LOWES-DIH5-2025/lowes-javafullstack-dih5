@@ -2,6 +2,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
+import { FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '../contexts/CartContext';
 import type { SubmitHandler } from 'react-hook-form';
 
 // Sample product data
@@ -73,6 +75,21 @@ interface ProductCardProps {
 
 // Product Card Component
 const ProductCard = ({ product }: ProductCardProps) => {
+  const { addToCart, removeFromCart, cartItems } = useCart();
+  
+  // Check if the product is in the cart
+  const isInCart = product.id !== undefined && cartItems.some(item => item.id === product.id);
+  
+  const handleCartAction = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (product.id === undefined) return;
+    
+    if (isInCart) {
+      removeFromCart(product.id);
+    } else {
+      addToCart(product);
+    }
+  };
   // Support both sample data and fakestoreapi data
   const name = product.name || product.title || 'No Name';
   const price = typeof product.price === 'number' ? product.price : 0;
@@ -108,6 +125,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
           ))}
           <span className="ms-2 text-muted">({Number(ratingValue || 0).toFixed(1)})</span>
         </div>
+        <button 
+          className={`btn btn-sm mt-2 w-100 ${isInCart ? 'btn-danger' : 'btn-primary'}`}
+          onClick={handleCartAction}
+        >
+          <FaShoppingCart className="me-1" />
+          {isInCart ? 'Remove from Cart' : 'Add to Cart'}
+        </button>
       </div>
     </div>
   );

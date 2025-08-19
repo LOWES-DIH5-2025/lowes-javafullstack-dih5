@@ -5,8 +5,11 @@
 // export
 
 import { NavLink } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '../../contexts/CartContext';
 
 const Header = () => {
+  const { cartCount } = useCart();
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -28,6 +31,18 @@ const Header = () => {
               <li className="nav-item">
                 {/* <a className="nav-link" href="#">Contact</a> */}
                 <NavLink to="/contact" className="nav-link">Contact</NavLink>
+              </li>
+              <li className="nav-item ms-3 d-flex align-items-center">
+                <NavLink to="/cart" className="btn btn-outline-light position-relative">
+                  <FaShoppingCart className="me-1" />
+                  Cart
+                  {cartCount > 0 && (
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {cartCount}
+                      <span className="visually-hidden">items in cart</span>
+                    </span>
+                  )}
+                </NavLink>
               </li>
             </ul>
           </div>
