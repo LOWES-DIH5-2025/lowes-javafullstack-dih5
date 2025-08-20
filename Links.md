@@ -48,6 +48,10 @@
 
 `https://forms.gle/nptac6K5GsmsZLwJA`
 
+### React JS Assessment - 12
+
+`https://forms.gle/E77qRdozKbwoDkFu8`
+
 ### Softwares
 
 `https://drive.google.com/drive/folders/1dAGEhUl2ESNJwN9AI36AtyMtxZ7Ss1VB?usp=sharing`
